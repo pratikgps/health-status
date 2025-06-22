@@ -25,24 +25,36 @@ elif [ "$num" == 2 ];
 
 elif [ "$num" == 3 ]; 
   then
+        echo ""
         echo "checking memory usage..."
+        echo ""
 
 elif [ "$num" == 4 ]; 
   then
+       echo ""
        echo "checking cpu usage..."
+       echo ""
 
 elif [ "$num" == 5 ]; 
   then
+        echo ""
         echo "sending report.."
+        echo ""
 
 elif [ "$num" == 6 ];  
   then
+        echo ""
         echo "Exiting..."
+        echo ""
         exit 0
 else
+        echo ""
         echo "Please Enter Correct number between 1-6. Thank You!."
+        echo ""
 fi
-
+echo ""
+sleep 1
 echo "Press Enter to continue..."
+echo ""
 read
 done
