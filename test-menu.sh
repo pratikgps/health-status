@@ -17,47 +17,47 @@ while true; do
 
 if [ "$num" == 1 ]; 
   then
-        echo "."
+        echo ""
         echo "Checking disk usage..."
-        echo "."
+        echo ""
 
 elif [ "$num" == 2 ]; 
   then
-        echo "."
+        echo ""
         echo "Checking monitor services..."
-        echo "."
+        echo ""
 
 elif [ "$num" == 3 ]; 
   then
-        echo "."
+        echo ""
         echo "checking memory usage..."
-        echo "."
+        echo ""
 
 elif [ "$num" == 4 ]; 
   then
-       echo "."
+       echo ""
        echo "checking cpu usage..."
-       echo "."
+       echo ""
 
 elif [ "$num" == 5 ]; 
   then
-        echo "."
+        echo ""
         echo "sending report.."
-        echo "."
+        echo ""
 
 elif [ "$num" == 6 ];  
   then
-        echo "."
+        echo ""
         echo "Exiting..."
-        echo "."
+        echo ""
         exit 0
 else
         echo ""
         echo "Please Enter Correct number between 1-6. Thank You!."
         echo ""
 fi
-echo "."
+echo ""
 echo "Press Enter to continue..."
-echo "."
+echo ""
 read
 done
