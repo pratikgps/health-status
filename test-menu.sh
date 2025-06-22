@@ -20,6 +20,8 @@ if [ "$num" == 1 ];
         echo ""
         echo "Checking disk usage..."
         echo ""
+        echo "Date: $(date)"
+        echo -e "\nDisk Usage:"
 
 elif [ "$num" == 2 ]; 
   then
