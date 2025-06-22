@@ -2,6 +2,7 @@
 
 LOG_FILE="/var/log/sys_health.log"
 EMAIL="Pratik.gitlab@gmail.com"
+REPORT="/tmp/sys_health_report.txt"
 
 while true; do
     echo "============================="
