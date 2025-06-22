@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE="/var/log/sys_health.log"
-EMAIL="your-email@example.com"
+EMAIL="Pratik.gitlab@gmail.com"
 
 check_disk_usage() {
     echo "Checking disk usage..."
