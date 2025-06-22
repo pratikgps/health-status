@@ -21,7 +21,8 @@ if [ "$num" == 1 ];
         echo "Checking disk usage..."
         echo ""
         echo "Date: $(date)"
-        echo -e "\ndf -h"
+        echo -e "\nDisk Usage:"
+        df -h
 
 elif [ "$num" == 2 ]; 
   then
