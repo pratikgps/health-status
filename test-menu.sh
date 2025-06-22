@@ -20,6 +20,8 @@ if [ "$num" == 1 ];
         echo ""
         echo "Checking disk usage..."
         echo ""
+        echo "Date: $(date)"
+        echo -e "\nDisk Usage:"
 
 elif [ "$num" == 2 ]; 
   then
@@ -56,7 +58,7 @@ else
         echo "Please Enter Correct number between 1-6. Thank You!."
         echo ""
 fi
-echo ""
+
 echo "Press Enter to continue..."
 echo ""
 read
