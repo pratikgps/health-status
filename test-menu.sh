@@ -29,24 +29,48 @@ elif [ "$num" == 2 ];
         echo ""
         echo "Checking monitor services..."
         echo ""
+        echo "Date: $(date)"
+        echo -e "\nRunning Services:"
+        systemctl list-units --type=service --state=running
 
 elif [ "$num" == 3 ]; 
   then
         echo ""
         echo "checking memory usage..."
         echo ""
+        echo "Date: $(date)"
+        echo -e "\nMemory Usage:"
+        free -m
 
 elif [ "$num" == 4 ]; 
   then
        echo ""
        echo "checking cpu usage..."
        echo ""
+       echo "Date: $(date)"
+       echo -e "\nCPU Usage:"
+       top -bn1 | grep "Cpu"
 
 elif [ "$num" == 5 ]; 
   then
         echo ""
-        echo "sending report.."
+        echo "Showing report.."
         echo ""
+    {
+        echo "=== System Health Report ==="
+        echo "Date: $(date)"
+        echo -e "\nDisk Usage:"
+        df -h
+        echo -e "\nRunning Services:"
+        systemctl list-units --type=service --state=running
+        echo -e "\nMemory Usage:"
+        free -m
+        echo -e "\nCPU Usage:"
+        top -bn1 | grep "Cpu"
+    } > "$REPORT"
+
+    mail -s "System Health Report" "$EMAIL" < "$REPORT"
+    echo "Report sent successfully!"
 
 elif [ "$num" == 6 ];  
   then
