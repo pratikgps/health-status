@@ -1,7 +1,6 @@
-#!/bin/bash
-
 LOG_FILE="/var/log/sys_health.log"
 EMAIL="Pratik.gitlab@gmail.com"
+REPORT="/tmp/sys_health_report.txt"
 
 while true; do
     echo "============================="
@@ -15,8 +14,7 @@ while true; do
     echo "6. Exit"
     read -p "Enter your choice: " num
 
-if [ "$num" == 1 ]; 
-  then
+    if [ "$num" == 1 ]; then
         echo ""
         echo "Checking disk usage..."
         echo ""
@@ -24,67 +22,62 @@ if [ "$num" == 1 ];
         echo -e "\nDisk Usage:"
         df -h
 
-elif [ "$num" == 2 ]; 
-  then
+    elif [ "$num" == 2 ]; then
         echo ""
-        echo "Checking monitor services..."
+        echo "Monitoring running services..."
         echo ""
         echo "Date: $(date)"
         echo -e "\nRunning Services:"
         systemctl list-units --type=service --state=running
 
-elif [ "$num" == 3 ]; 
-  then
+    elif [ "$num" == 3 ]; then
         echo ""
-        echo "checking memory usage..."
+        echo "Checking memory usage..."
         echo ""
         echo "Date: $(date)"
         echo -e "\nMemory Usage:"
         free -m
 
-elif [ "$num" == 4 ]; 
-  then
-       echo ""
-       echo "checking cpu usage..."
-       echo ""
-       echo "Date: $(date)"
-       echo -e "\nCPU Usage:"
-       top -bn1 | grep "Cpu"
-
-elif [ "$num" == 5 ]; 
-  then
+    elif [ "$num" == 4 ]; then
         echo ""
-        echo "Showing report.."
+        echo "Checking CPU usage..."
         echo ""
-    {
-        echo "=== System Health Report ==="
         echo "Date: $(date)"
-        echo -e "\nDisk Usage:"
-        df -h
-        echo -e "\nRunning Services:"
-        systemctl list-units --type=service --state=running
-        echo -e "\nMemory Usage:"
-        free -m
         echo -e "\nCPU Usage:"
         top -bn1 | grep "Cpu"
-    } > "$REPORT"
 
-    mail -s "System Health Report" "$EMAIL" < "$REPORT"
-    echo "Report sent successfully!"
+    elif [ "$num" == 5 ]; then
+        echo ""
+        echo "Generating and sending report..."
+        echo ""
+        {
+            echo "=== System Health Report ==="
+            echo "Date: $(date)"
+            echo -e "\nDisk Usage:"
+            df -h
+            echo -e "\nRunning Services:"
+            systemctl list-units --type=service --state=running
+            echo -e "\nMemory Usage:"
+            free -m
+            echo -e "\nCPU Usage:"
+            top -bn1 | grep "Cpu"
+        } > "$REPORT"
 
-elif [ "$num" == 6 ];  
-  then
+        mail -s "System Health Report" "$EMAIL" < "$REPORT"
+        echo "Report sent successfully!"
+
+    elif [ "$num" == 6 ]; then
         echo ""
         echo "Exiting..."
         echo ""
         exit 0
-else
+    else
         echo ""
-        echo "Please Enter Correct number between 1-6. Thank You!."
+        echo "Please enter a valid number between 1-6. Thank you!"
         echo ""
-fi
+    fi
 
-echo "Press Enter to continue..."
-echo ""
-read
+    echo "Press Enter to continue..."
+    echo ""
+    read
 done
