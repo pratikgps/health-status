@@ -57,17 +57,36 @@ elif [ "$num" == 5 ];
         echo ""
         echo "Showing report.."
         echo ""
+        echo "=== System Health Report ==="
+        echo "Date: $(date)"
+        echo -e "\nDisk Usage:"
+        df -h
+        echo "============================="
+        echo -e "\nRunning Services:"
+        systemctl list-units --type=service --state=running
+        echo "============================="
+        echo -e "\nMemory Usage:"
+        free -m
+        echo "============================="
+        echo -e "\nCPU Usage:"
+        top -bn1 | grep "Cpu"
+        echo "============================="
+    
     {
         echo "=== System Health Report ==="
         echo "Date: $(date)"
         echo -e "\nDisk Usage:"
         df -h
+        echo "============================="
         echo -e "\nRunning Services:"
         systemctl list-units --type=service --state=running
+        echo "============================="
         echo -e "\nMemory Usage:"
         free -m
+        echo "============================="
         echo -e "\nCPU Usage:"
         top -bn1 | grep "Cpu"
+        echo "============================="
     } > "$REPORT"
 
     mail -s "System Health Report" "$EMAIL" < "$REPORT"
