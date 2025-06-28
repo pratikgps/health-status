@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOG_FILE="/var/log/sys_health.log"
-EMAIL="monikaspawar1@gmail.com"
+EMAIL="pratik.gitlab@gmail.com"
 
 check_disk_usage() {
  REPORT="/tmp/disk_usage_report.txt"
